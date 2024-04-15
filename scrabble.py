@@ -25,6 +25,6 @@ def score_word(word):
     return score
 
 
-# function test
-score = score_word("test")
-print(f"The score of 'test' is: {score}")
+# Lets test this function.
+brownie_points = score_word("BROWNIE")
+print(f"brownie: {brownie_points}")
