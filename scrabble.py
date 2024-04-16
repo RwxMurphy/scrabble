@@ -28,3 +28,27 @@ def score_word(word):
 # Lets test this function.
 brownie_points = score_word("BROWNIE")
 print(f"brownie: {brownie_points}")
+
+# Player data
+player_to_words = {
+    "player1": ["Blue", "Tennis", "Exit"],
+    "wordNeard": ["Earth", "Eyes", "Machine"],
+    "lexiCon": ["Eraser", "Belly", "Husky"],
+    "profReader": ["zap", "comma", "perion"]
+}
+
+player_to_points = {}
+
+# Calculate and display the score of each player.
+for player in player_to_words:
+    player_points = 0
+    words = player_to_words[player]
+
+    for w in words:
+        player_points += score_word(w)
+    player_to_points[player] = player_points
+
+# Display names and scores
+print("Player Standings\n===================")
+for key in player_to_points:
+    print(f"{key} ==> {player_to_points[key]} points")
