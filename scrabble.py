@@ -26,8 +26,8 @@ def score_word(word):
 
 
 # Lets test this function.
-brownie_points = score_word("BROWNIE")
-print(f"brownie: {brownie_points}")
+# brownie_points = score_word("BROWNIE")
+# print(f"brownie: {brownie_points}")
 
 # Player data
 player_to_words = {
@@ -48,7 +48,25 @@ for player in player_to_words:
         player_points += score_word(w)
     player_to_points[player] = player_points
 
+
+# Add a player and word to the game
+def play_word(player_name, word):
+    if player_name in player_to_words:
+        words_played_list = player_to_words[player_name]
+        words_played_list.append(word)
+    else:
+        player_to_words.update({player_name: [word]})
+
+
+# Test the play_word function
+print(player_to_words)
+print()
+play_word("Murphy", "ZEBRA")
+print("After adding player and word")
+print(player_to_words)
+
+
 # Display names and scores
-print("Player Standings\n===================")
+print("\nPlayer Standings\n===================")
 for key in player_to_points:
     print(f"{key} ==> {player_to_points[key]} points")
