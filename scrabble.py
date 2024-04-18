@@ -7,6 +7,18 @@ points = [
     4, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10
 ]
 
+# Player data
+player_to_words = {
+    "player1": ["Blue", "Tennis", "Exit"],
+    "wordNeard": ["Earth", "Eyes", "Machine"],
+    "lexiCon": ["Eraser", "Belly", "Husky"],
+    "profReader": ["zap", "comma", "perion"]
+}
+
+# Stores the score for each player
+player_to_points = {}
+
+
 letters_points_zipped = zip(letters, points)
 letter_to_points = {key: value for key, value in letters_points_zipped}
 
@@ -25,28 +37,15 @@ def score_word(word):
     return score
 
 
-# Lets test this function.
-# brownie_points = score_word("BROWNIE")
-# print(f"brownie: {brownie_points}")
+# Calculate score.
+def update_point_totals():
+    for player in player_to_words:
+        player_points = 0
+        words = player_to_words[player]
 
-# Player data
-player_to_words = {
-    "player1": ["Blue", "Tennis", "Exit"],
-    "wordNeard": ["Earth", "Eyes", "Machine"],
-    "lexiCon": ["Eraser", "Belly", "Husky"],
-    "profReader": ["zap", "comma", "perion"]
-}
-
-player_to_points = {}
-
-# Calculate and display the score of each player.
-for player in player_to_words:
-    player_points = 0
-    words = player_to_words[player]
-
-    for w in words:
-        player_points += score_word(w)
-    player_to_points[player] = player_points
+        for w in words:
+            player_points += score_word(w)
+        player_to_points[player] = player_points
 
 
 # Add a player and word to the game
@@ -66,7 +65,7 @@ print("After adding player and word")
 print(player_to_words)
 
 
-# Display names and scores
-print("\nPlayer Standings\n===================")
-for key in player_to_points:
-    print(f"{key} ==> {player_to_points[key]} points")
+# Display updatted playes standngs
+update_point_totals()
+print()
+print(player_to_points)
